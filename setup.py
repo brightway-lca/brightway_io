@@ -36,7 +36,7 @@ setup(
     # package_data={'your_name_here': package_files(os.path.join('brightway_io', 'data'))},
     install_requires=[
         'appdirs',
-        'docopt',
+        # 'docopt',
         'wrapt',
         'stats_arrays',
     ],

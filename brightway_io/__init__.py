@@ -1,4 +1,4 @@
-# __all__ = [
+__all__ = [
 #     'activity_hash',
 #     'add_ecoinvent_33_biosphere_flows',
 #     'add_ecoinvent_34_biosphere_flows',
@@ -10,6 +10,7 @@
 #     'CSVImporter',
 #     'DatabaseSelectionToGEXF',
 #     'DatabaseToGEXF',
+    'dispatch'
 #     'Ecospold1LCIAImporter',
 #     'es2_activity_hash',
 #     'ExcelImporter',
@@ -22,13 +23,14 @@
 #     'migrations',
 #     'MultiOutputEcospold1Importer',
 #     'normalize_units',
+    'selection',
 #     'SimaProCSVImporter',
 #     'SimaProLCIACSVImporter',
 #     'SingleOutputEcospold1Importer',
 #     'SingleOutputEcospold2Importer',
 #     'unlinked_data',
 #     'UnlinkedData',
-# ]
+]
 
 __version__ = (3, 0, "dev")
 
@@ -57,6 +59,7 @@ __version__ = (3, 0, "dev")
 # )
 # from .units import normalize_units
 # from .unlinked_data import unlinked_data, UnlinkedData
+from .utils import dispatch, selection
 # from .utils import activity_hash, es2_activity_hash, load_json_data_file
 
 # def create_default_lcia_methods(overwrite=False, rationalize_method_names=False):
