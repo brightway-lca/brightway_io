@@ -6,6 +6,7 @@ from ..utils import dispatch, activity_hash, DEFAULT_FIELDS
 # import numbers
 # import numpy as np
 import pprint
+import stats_arrays as sa
 
 
 def format_nonunique_key_error(obj, fields, others):
@@ -39,7 +40,7 @@ def link_iterable_by_fields(source_data, target_data, link_field, source_fields=
     If ``relink``, link to objects which already have an ``input``. Otherwise, skip already linked objects.
 
     """
-    if relink:
+    if not relink:
         filter_func = lambda x: True
     else:
         filter_func = lambda x: not x.get(link_field)
@@ -63,7 +64,7 @@ def link_iterable_by_fields(source_data, target_data, link_field, source_fields=
         else:
             candidates[key] = obj
 
-    for obj in filter_func(target_data):
+    for obj in filter(filter_func, target_data):
         key = activity_hash(obj, target_fields)
         if key in duplicates:
             raise StrategyError(format_nonunique_key_error(obj, target_fields, duplicates[key]))
@@ -102,6 +103,12 @@ def assign_only_product_as_production(db):
             ds['name'] = ds.get('name') or product['name']
             ds['unit'] = ds.get('unit') or product.get('unit') or 'Unknown'
     return db
+
+
+def assign_no_uncertainty(data):
+    for obj in data:
+        obj['uncertainty_type_id'] = sa.NoUncertainty.id
+    return data
 
 
 # def link_technosphere_by_activity_hash(db, external_db_name=None, fields=None):

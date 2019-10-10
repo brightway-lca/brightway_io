@@ -21,6 +21,7 @@ __all__ = [
 #     "drop_temporary_outdated_biosphere_flows",
     "drop_attribute",
     "drop_unlinked",
+    "assign_no_uncertainty",
 #     "drop_unlinked_cfs",
 #     "drop_unspecified_subcategories",
 #     "es1_allocate_multioutput",
@@ -99,6 +100,7 @@ from .biosphere import (
 from .generic import (
 #     add_database_name,
     assign_only_product_as_production,
+    assign_no_uncertainty,
 #     convert_activity_parameters_to_list,
 #     convert_uncertainty_types_to_integers,
 #     drop_falsey_uncertainty_fields_but_keep_zeros,
