@@ -28,7 +28,7 @@ def drop_attribute(data, key, attribute):
 
 def number_objects(data, key, sorting_fields):
     for i, obj in enumerate(sorted(data[key], key=lambda x: [x.get(field) for field in sorting_fields])):
-        obj['id'] = i
+        obj['id'] = i + 1  # SQL sequences are 1-indexed
     return data
 
 
