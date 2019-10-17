@@ -1,48 +1,37 @@
-from setuptools import setup
-import os
+from setuptools import setup, find_packages
+from os import path
 
-packages = []
-root_dir = os.path.dirname(__file__)
-if root_dir:
-    os.chdir(root_dir)
+here = path.abspath(path.dirname(__file__))
 
+requirements = [
+    "brightway_projects",
+    'appdirs',
+    'peewee',
+    'stats_arrays',
+    'wrapt',
+]
+test_requirements = ['pytest']
 
-# Probably should be changed, __init__.py is no longer required for Python 3
-for dirpath, dirnames, filenames in os.walk('brightway_io'):
-    # Ignore dirnames that start with '.'
-    if '__init__.py' in filenames:
-        pkg = dirpath.replace(os.path.sep, '.')
-        if os.path.altsep:
-            pkg = pkg.replace(os.path.altsep, '.')
-        packages.append(pkg)
-
-
-def package_files(directory):
-    paths = []
-    for (path, directories, filenames) in os.walk(directory):
-        for filename in filenames:
-            paths.append(os.path.join('..', path, filename))
-    return paths
+v_temp = {}
+with open("brightway_projects/version.py") as fp:
+    exec(fp.read(), v_temp)
+version = ".".join((str(x) for x in v_temp['version']))
 
 
 setup(
     name='brightway_io',
-    version="3.0.dev",
-    packages=packages,
+    version=version,
+    packages=find_packages(exclude=['tests']),
     author='Chris Mutel',
     author_email='cmutel@gmail.com',
-    license="BSD 3-clause",
+    license="NewBSD 3-clause; LICENSE",
     # Only if you have non-python data (CSV, etc.). Might need to change the directory name as well.
     # package_data={'your_name_here': package_files(os.path.join('brightway_io', 'data'))},
-    install_requires=[
-        'appdirs',
-        # 'docopt',
-        'wrapt',
-        'stats_arrays',
-    ],
+    install_requires=requirements,
+    tests_require=requirements + test_requirements,
     url="https://github.com/brightway-lca/brightway_io",
     long_description_content_type='text/markdown',
-    long_description=open('README.md').read(),
+    long_description=open(path.join(here, "README.md")).read(),
     description='I/O functions for Brightway framework',
     classifiers=[
         'Intended Audience :: End Users/Desktop',
@@ -54,7 +43,6 @@ setup(
         'Operating System :: POSIX',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering :: Information Analysis',

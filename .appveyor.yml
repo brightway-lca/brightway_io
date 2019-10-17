@@ -1,0 +1,31 @@
+skip_commits:
+  message: /^Merge pull request /
+
+build: false
+
+environment:
+  PYTHONIOENCODING: "UTF-8"
+
+  matrix:
+    - PYTHON_VERSION: "3.7"
+      PYTHON_ARCH: "64"
+      CONDA_PY: "37"
+      CONDA_INSTALL_LOCN: "C:\\Miniconda37-x64"
+
+install:
+  - call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
+  - python --version
+  - conda config --set always_yes yes
+  - conda update -y conda
+  - conda config --add channels conda-forge
+  - conda config --append channels cmutel
+  - conda config --append channels cmutel/label/nightly
+  - conda install -y -c conda-forge appdirs peewee wrapt stats_arrays brightway_projects-dev pytest pytest-cov coveralls
+  - pip install -e .
+
+test_script:
+  - pytest
+
+
+
+

@@ -348,7 +348,7 @@ class Ecospold2DataExtractor(object):
     @classmethod
     def extract_parameter(cls, exc):
         name = exc.get("variableName")
-        data = {"description": exc.name.text, "id": exc.get("parameterId")}
+        data = {"description": exc.name.text, "uuid": exc.get("parameterId")}
         if hasattr(exc, "unitName"):
             data["unit"] = exc.unitName.text
         if hasattr(exc, "comment"):

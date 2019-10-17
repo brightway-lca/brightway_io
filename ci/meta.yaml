@@ -1,0 +1,36 @@
+package:
+  name: brightway_io-dev
+  version: {{ environ['VERSION'] }}
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  script_env:
+   - VERSION
+   - CONDA_BLD_PATH
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - brightway_projects-dev
+    - appdirs
+    - peewee
+    - wrapt
+    - stats_arrays
+
+test:
+  imports:
+    - brightway_io
+
+about:
+  home: "https://github.com/brightway-lca/brightway_io"
+  license: BSD License
+  summary: 'IO tools for Brightway LCA framework '
+license_family: BSD

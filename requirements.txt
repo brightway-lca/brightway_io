@@ -1,4 +1,5 @@
 appdirs
-docopt
-wrapt
+brightway_projects
+peewee
 stats_arrays
+wrapt

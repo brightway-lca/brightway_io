@@ -1,3 +1,5 @@
+from .version import version as __version__
+
 __all__ = [
 #     'activity_hash',
 #     'add_ecoinvent_33_biosphere_flows',
@@ -31,8 +33,6 @@ __all__ = [
 #     'unlinked_data',
 #     'UnlinkedData',
 ]
-
-__version__ = (3, 0, "dev")
 
 # from .export import (
 #     DatabaseToGEXF, DatabaseSelectionToGEXF, keyword_to_gephi_graph,

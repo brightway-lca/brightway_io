@@ -1,0 +1,6 @@
+appdirs
+git+git://github.com/brightway-lca/brightway_projects@master#egg=brightway_projects
+peewee
+stats_arrays
+wrapt
+pytest
