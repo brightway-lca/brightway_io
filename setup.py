@@ -13,7 +13,7 @@ requirements = [
 test_requirements = ['pytest']
 
 v_temp = {}
-with open("brightway_projects/version.py") as fp:
+with open("brightway_io/version.py") as fp:
     exec(fp.read(), v_temp)
 version = ".".join((str(x) for x in v_temp['version']))
 
