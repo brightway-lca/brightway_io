@@ -31,9 +31,9 @@ before_install:
     fi
 install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      conda create -n test-environment python=$TRAVIS_PYTHON_VERSION brightway_projects-dev appdirs peewee wrapt stats_arrays pytest pytest-cov coveralls;
+      conda create -n test-environment python=$TRAVIS_PYTHON_VERSION brightway_projects-dev appdirs peewee wrapt stats_arrays pytest pytest-cov coveralls pip;
       source activate test-environment;
-      pip3 install -e .;
+      pip install -e .;
     else
       pip3 install -r ci/macos-travis.txt;
       pip3 install -e .;
