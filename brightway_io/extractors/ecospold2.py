@@ -205,7 +205,7 @@ class Ecospold2DataExtractor(object):
                             or 0
                         )
                     ],
-                    "uuid": stem.activityDescription.activity.get("id"),
+                    "activity instance uuid": stem.activityDescription.activity.get("id"),
                     "filename": filename,
                     "location": stem.activityDescription.geography.shortname.text,
                     "name": stem.activityDescription.activity.activityName.text,
@@ -355,7 +355,7 @@ class Ecospold2DataExtractor(object):
             data["comment"] = exc.comment.text
         data.update(cls.extract_uncertainty_dict(exc))
         if name is None:
-            name = "Unnamed parameter: {}".format(data["id"])
+            name = "Unnamed parameter: {}".format(data["uuid"])
             data["unnamed"] = True
         return name, data
 
@@ -417,7 +417,7 @@ class Ecospold2DataExtractor(object):
             "production volume": float(exc.get("productionVolumeAmount") or 0),
         }
         if not is_biosphere:
-            data["activity"] = exc.get("activityLinkId")
+            data["activity instance uuid"] = exc.get("activityLinkId")
         if hasattr(exc, "unitName"):
             data["unit"] = exc.unitName.text
         if hasattr(exc, "comment"):
