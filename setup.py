@@ -4,7 +4,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 requirements = [
-    "brightway_projects",
+    "bw_projects",
     'appdirs',
     'peewee',
     'stats_arrays',
