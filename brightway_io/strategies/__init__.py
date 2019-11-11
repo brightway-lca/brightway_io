@@ -121,10 +121,6 @@ from .generic import (
 #     set_biosphere_type,
 #     match_subcategories,
 # )
-# from .migrations import (
-#     migrate_datasets,
-#     migrate_exchanges,
-# )
 # from .simapro import (
 #     change_electricity_unit_mj_to_kwh,
 #     fix_localized_water_flows,
