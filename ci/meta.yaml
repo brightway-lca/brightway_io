@@ -1,5 +1,5 @@
 package:
-  name: brightway_io-dev
+  name: bw_io-dev
   version: {{ environ['VERSION'] }}
 
 source:
@@ -19,7 +19,7 @@ requirements:
     - setuptools
   run:
     - python
-    - brightway_projects-dev
+    - bw_projects-dev
     - appdirs
     - peewee
     - wrapt
@@ -27,10 +27,10 @@ requirements:
 
 test:
   imports:
-    - brightway_io
+    - bw_io
 
 about:
-  home: "https://github.com/brightway-lca/brightway_io"
+  home: "https://github.com/brightway-lca/bw_io"
   license: BSD License
   summary: 'IO tools for Brightway LCA framework '
 license_family: BSD

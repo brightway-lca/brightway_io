@@ -20,7 +20,7 @@ install:
   - conda config --add channels conda-forge
   - conda config --append channels cmutel
   - conda config --append channels cmutel/label/nightly
-  - conda install -y -c conda-forge appdirs peewee wrapt stats_arrays brightway_projects-dev pytest pytest-cov coveralls
+  - conda install -y -c conda-forge appdirs peewee wrapt stats_arrays bw_projects-dev pytest pytest-cov coveralls
   - pip install -e .
 
 test_script:

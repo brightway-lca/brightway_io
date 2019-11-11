@@ -13,23 +13,23 @@ requirements = [
 test_requirements = ['pytest']
 
 v_temp = {}
-with open("brightway_io/version.py") as fp:
+with open("bw_io/version.py") as fp:
     exec(fp.read(), v_temp)
 version = ".".join((str(x) for x in v_temp['version']))
 
 
 setup(
-    name='brightway_io',
+    name='bw_io',
     version=version,
     packages=find_packages(exclude=['tests']),
     author='Chris Mutel',
     author_email='cmutel@gmail.com',
     license="NewBSD 3-clause; LICENSE",
     # Only if you have non-python data (CSV, etc.). Might need to change the directory name as well.
-    # package_data={'your_name_here': package_files(os.path.join('brightway_io', 'data'))},
+    # package_data={'your_name_here': package_files(os.path.join('bw_io', 'data'))},
     install_requires=requirements,
     tests_require=requirements + test_requirements,
-    url="https://github.com/brightway-lca/brightway_io",
+    url="https://github.com/brightway-lca/bw_io",
     long_description_content_type='text/markdown',
     long_description=open(path.join(here, "README.md")).read(),
     description='I/O functions for Brightway framework',
